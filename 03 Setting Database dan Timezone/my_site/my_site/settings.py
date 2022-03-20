@@ -78,6 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # Disini dapat menambahkan database baru
 }
 
 
@@ -103,6 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
+# Disini untuk setting Timezone
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
