@@ -1,0 +1,16 @@
+{% extends 'blog_site/base.html' %}
+
+{% block title %}
+    Blog
+{% endblock %}
+
+{% block header %}
+    Welcome to my Blog
+{% endblock %}
+
+{% block content %}
+    {% for blog in blogs %}
+        <h2>{{ blog.title }}</h2>
+        <p>{{ blog.desc }}</p>
+    {% endfor %}
+{% endblock %}
