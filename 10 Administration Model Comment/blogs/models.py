@@ -8,3 +8,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    blogs = models.ForeignKey(Blog, on_delete=callable)
+    comments = models.TextField()
+    creat_at = models.DateTimeField(auto_now_add=True)
