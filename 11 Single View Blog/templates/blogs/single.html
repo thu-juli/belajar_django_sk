@@ -12,4 +12,9 @@
 {% block content %}
     <h3> {{blog.desc}} </h3>
     <p> {{blog.creat_at}} </p>
+    <hr>
+    <h3>Komentar</h3>
+    {% for comment in blog.comment_set.all %}
+        <p> {{comment.desc}} </p>
+    {% endfor %}
 {% endblock content %}
