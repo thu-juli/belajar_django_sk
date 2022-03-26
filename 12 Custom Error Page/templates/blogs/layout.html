@@ -1,0 +1,21 @@
+{% extends 'blogs/base.html' %}
+
+
+{% block title %}
+Single Blog
+{% endblock title %}
+
+{% block header %}
+    <h2>{{ blog.title }}</h2>
+{% endblock header %}
+
+{% block content %}
+    <p> {{blog.desc}} </p>
+    <hr>
+    <h3>Komentar</h3>
+    <ol>
+        {% for comment in blog.comment_set.all %}
+            <li> {{ comment.desc }} </li>
+        {% endfor %}
+    </ol>
+{% endblock content %}

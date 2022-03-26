@@ -1,0 +1,19 @@
+{% extends 'blogs/base.html' %}
+
+
+{% block title %}
+Blogs
+{% endblock title %}
+
+{% block header %}
+    <h2>Daftar Blog</h2>
+{% endblock header %}
+
+{% block content %}
+    {% for blog in blogs %}
+        <a href=" {{blog.id}} ">
+            <h3> {{blog.title}} </h3>
+        </a>
+        <p> {{blog.desc}} </p>
+    {% endfor %}
+{% endblock content %}
