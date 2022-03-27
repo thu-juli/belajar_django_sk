@@ -13,7 +13,7 @@
 
 {% block content %}
     {% for blog in blogs %}
-        <a href="{{blog.id}}">
+        <a href= {% url 'blogs:single' id=blog.id%} >
             <h2> {{blog.title}} </h2>
         </a>
         <p> {{blog.desc}} </p>

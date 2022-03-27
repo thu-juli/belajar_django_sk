@@ -13,6 +13,10 @@
 
 <body>
     {% block header %}{% endblock header %}
+    {% block navbar %}
+    <a href="/">Home</a>
+    <a href= {% url 'blogs:index' %} >Blogs</a>
+    {% endblock navbar %}
     {% block content %}{% endblock content %}
 </body>
 
