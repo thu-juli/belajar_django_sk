@@ -1,0 +1,28 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}
+    {{blog.title}}
+{% endblock title %}
+
+
+{% block header %}
+    <h2> {{blog.title}} </h2>
+{% endblock header %}
+
+{% block content %}
+
+    <p> {{blog.desc}} </p>
+    <p> {{blog.creat_at}} </p>
+    <hr>
+    <h3>Komentar</h3>
+    <form action="{% url 'blogs:comment' id=blog.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="desc" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" value="send now">
+    </form>
+
+    {% for comment in blog.comment_set.all %}
+        <p> {{comment.desc}} </p>
+    {% endfor %}
+{% endblock content %}
