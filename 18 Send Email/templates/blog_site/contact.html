@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <h1>
+        Form Kontak
+    </h1>
+{% endblock title %}
+
+{% block content %}
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Kirim Email">
+    </form>
+{% endblock content %}
