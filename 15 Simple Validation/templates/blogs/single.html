@@ -15,6 +15,9 @@
     <p> {{blog.creat_at}} </p>
     <hr>
     <h3>Komentar</h3>
+    {% if errors %}
+        <p><strong> {{errors}} </strong></p>
+    {% endif %}
     <form action="{% url 'blogs:comment' id=blog.id %}" method="post">
         {% csrf_token %}
         <textarea name="desc" cols="30" rows="10"></textarea>
