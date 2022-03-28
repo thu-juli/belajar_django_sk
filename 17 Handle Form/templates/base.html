@@ -14,13 +14,13 @@
 <body>
     {% block navbar %}
         <nav>
-            <a href="/">
+            <a href="{% url 'home' %}">
                 Home
             </a>
             <a href="{% url 'blogs:index' %}">
                 Blogs
             </a>
-            <a href="/kontak">
+            <a href="{% url 'contact' %}">
                 Kontak
             </a>
         </nav>

@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from .forms import ContactForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from . import forms
+from django.contrib import messages
 
 
 def index(request):
@@ -7,5 +10,12 @@ def index(request):
 
 
 def contact(request):
-    form = ContactForm()
+    form = forms.ContactForm()
+
+    if request.method == 'POST':
+        form = forms.ContactForm(request.POST)
+        if form.is_valid():
+            messages.success(request, 'Berhasil Kirim Email')
+            return HttpResponseRedirect(reverse('contact'))
+
     return render(request, 'blog_site/contact.html', {'form': form})
