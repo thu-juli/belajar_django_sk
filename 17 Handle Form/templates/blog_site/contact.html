@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <h1>
+        Form Kontak
+    </h1>
+{% endblock title %}
+
+{% block content %}
+    <form action="" method="post">
+        {{ form.as_p }}
+        <input type="submit" value="Kirim Email">
+    </form>
+{% endblock content %}
