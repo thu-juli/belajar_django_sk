@@ -1,16 +1,29 @@
 from django.db import models
+import uuid
 
 
-class Blog(models.Model):
-    title = models.CharField(max_length=100)
-    desc = models.TextField()
-    creat_at = models.DateTimeField(auto_now_add=True)
+class Project(models.Model):
+    title = models.CharField(max_length=254)
+    description = models.TextField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
 
     def __str__(self):
         return self.title
 
 
-class Comment(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    desc = models.TextField()
-    creat_at = models.DateTimeField(auto_now_add=True)
+class Review(models.Model):
+    VOTE_TYPE = [
+        ('up', 'up vote'),
+        ('down', 'down  vote'),
+    ]
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    body = models.TextField(blank=True, null=True)
+    value = models.CharField(max_length=254, choices=VOTE_TYPE)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.value

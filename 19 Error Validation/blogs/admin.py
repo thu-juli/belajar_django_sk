@@ -1,15 +1,5 @@
 from django.contrib import admin
-from .models import Blog, Comment
+from .models import Project, Review
 
-
-class CommentInline(admin.StackedInline):
-    model = Comment
-
-
-class BlogAdmin(admin.ModelAdmin):
-    inlines = (
-        CommentInline,
-    )
-
-
-admin.site.register(Blog, BlogAdmin)
+admin.site.register(Project)
+admin.site.register(Review)

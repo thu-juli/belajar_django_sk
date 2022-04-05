@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h2>
+        Wellcome to my site
+    </h2>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Link</th>
+        </tr>
+        {% for project in listproject %}
+        <tr>
+            <td> {{ project.title }} </td>
+            <td> <a href=" {% url 'blogs' project.id %} ">Link</a> </td>
+        </tr>
+        {% endfor %}
+        </tr>
+    </table>
+{% endblock content %}

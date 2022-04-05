@@ -21,29 +21,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-epiz3(&0o$g8g9xf__-7c8#_z9m2*(*)c9x68u+vtoo15&u0*-'
+SECRET_KEY = 'django-insecure-jkr#_9_bm+4iia-4bm7$z@bwry!6xtrvxza5qdv5$ovzi^*=rm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# testing send message to email
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = '92502f2ab438ec'
-EMAIL_HOST_PASSWORD = '84ff12b2077ac4'
-EMAIL_PORT = '2525'
 
 # Application definition
 
 INSTALLED_APPS = [
-    'blogs.apps.BlogsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'blogs.apps.BlogsConfig'
 ]
 
 MIDDLEWARE = [
@@ -61,7 +57,9 @@ ROOT_URLCONF = 'blog_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,11 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    os.path.join(
-        BASE_DIR, 'assets'
-    ),
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
