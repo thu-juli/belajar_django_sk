@@ -7,12 +7,15 @@
     <table>
         <tr>
             <th>Title</th>
-            <th>Link</th>
+            <th></th>
+            <th></th>
         </tr>
         {% for project in listproject %}
         <tr>
             <td> {{ project.title }} </td>
-            <td> <a href=" {% url 'blogs' project.id %} ">Link</a> </td>
+            <td> <a href=" {% url 'blogs' project.id %} ">View</a></td>
+            <td> <a href=" {% url 'update-project' project.id %} ">Edit</a></td>
+            <td> <a href=" {% url 'delete-project' project.id %} ">Delete</a> </td>
         </tr>
         {% endfor %}
         </tr>
