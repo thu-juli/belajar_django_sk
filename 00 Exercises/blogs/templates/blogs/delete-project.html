@@ -3,8 +3,8 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <p>Are you sure delete '{{project}}'? </p>
-        <button type="submit"><a href=" {% url 'index' %} "> Go Back </a></button>
+        <p>Are you sure delete "{{project}}"? </p>
+        <a href=" {% url 'index' %} "><button type="button"> Go Back </button></a>
         <input type="submit" value="Confirm">
     </form>
 {% endblock content %}
