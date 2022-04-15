@@ -1,0 +1,13 @@
+{% include 'main.html' %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.description }}</p>
+    <hr>
+    {% for tag in post.tags.all %}
+    <span>{{ tag }}</span>
+    {% endfor %}
+    <hr>
+    <p><em>{{ post.created }}</em></p>
+
+{% endblock content %}
