@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabut</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if page == 'day' %}
+        <h1>year: {{ year }}</h1>
+        <h1>month: {{ month }}</h1>
+        <h1>day: {{ day }}</h1>
+    {% elif page == 'month' %}
+        <h1>year: {{ year }}</h1>
+        <h1>month: {{ month }}</h1>
+    {% elif page == 'year' %}
+        <h1>year: {{ year }}</h1>
+    {% else %}
+        <h1>Welcome</h1>
+    {% endif %}
+</body>
+</html>
