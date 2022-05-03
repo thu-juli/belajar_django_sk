@@ -14,12 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form method="post">
-                    {% csrf_token %}
-                    <!-- {{ form.as_p }} -->
-                    {% crispy formModel %}
-                    <button type="submit">Submit</button>
-                </form>
+                {% crispy form %}
             </div>
         </div>
     </div>
