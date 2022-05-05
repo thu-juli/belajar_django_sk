@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile.first_name }} {{ profile.last_name }}
+                    </h5>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ profile.hobby }}</h6>
+                    <a href="{% url 'sosmed:list-view' %}" class="card-link btn btn-primary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ profile.id }}
+
+
+{% endblock content %}
