@@ -127,4 +127,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Auth System
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+
+# Django Crispy
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

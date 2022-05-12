@@ -1,7 +1,7 @@
 <!-- Start Section Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Forum</a>
+        <a class="navbar-brand" href="{% url 'home' %}">MyForum</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,11 +9,26 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Forums
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'forums:list' %}">List Forums</a></li>
+                        <li><a class="dropdown-item" href="{% url 'forums:create' %}">Create Forums</a></li>
+                    </ul>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'forums:list' %}">Forums</a>
+                    </li>
                 </li>
+                {% endif %}
+
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
@@ -22,8 +37,12 @@
                         Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logut</a></li>
+                        {% else %}
+                        <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                        <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
+                        {% endif %}
                     </ul>
                 </li>
             </ul>

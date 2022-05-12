@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ object.title }}
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="fs-3">{{ object.title }}</h1>
+        <p><span class="badge bg-primary">{{ object.user.username }}</span> - {{ object.created }}</p>
+        <p class="border-bottom">{{ object.content}}</p>
+    </div>
+</div>
+{% endblock content %}
