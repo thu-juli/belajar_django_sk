@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
 from django.shortcuts import reverse
+from random import randint
 # Create your models here.
 
 
@@ -17,7 +18,9 @@ class Forum(models.Model):
         return reverse('home')
 
     def save(self):
-        self.slug = slugify(self.title)
+        if self.pk == None:
+            extra = str(randint(1, 10000))
+            self.slug = slugify(self.title) + '-' + extra
         super().save()
 
     def __str__(self):

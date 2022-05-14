@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block title %}
 Forum List
@@ -9,7 +10,7 @@ Forum List
     <div class="col-md-8">
         {% for forum in object_list %}
         <h1 class="fs-3"><a href="{% url 'forums:detail' forum.slug %}">{{ forum.title }}</a></h1>
-        <p><span class="badge bg-primary">{{ forum.user.username }}</span> - {{ forum.created|date }}</p>
+        <p><span class="badge bg-primary">{{ forum.user.username }}</span> - {{ forum.created|naturaltime }}</p>
         <p>{{ forum.content|truncatewords:50 }}</p>
         {% if user.is_authenticated %}
         <form class ="mb-2" action="{% url 'forums:delete' forum.slug %}" method="post">
