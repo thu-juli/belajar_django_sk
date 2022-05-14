@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 
 {% block title %}
 {{ object.title }}
@@ -11,6 +13,19 @@
         <p><span class="badge bg-primary">{{ object.user.username }}</span> - {{ object.created }}</p>
         <p class="border-bottom">{{ object.content}}</p>
         <a href="{% url 'forums:list' %}" class="btn btn-danger">Back</a>
+    </div>
+    <div class="col-md-4">
+        <h2 class="text-center">Comment list</h2>
+        {% for comment in object.comment_set.all %}
+        <h5>{{ comment.title }} - by <span class="badge bg-primary">{{ comment.user }}</span></h5>
+        <p class="border-bottom">{{ comment.content }}</p>
+        {% endfor %}
+        <form action="{% url 'forums:comment-create' object.id  %}" method="post">
+            {% csrf_token %}
+            {{ comment_form|crispy }}
+            <input type="hidden" name="id" value="{{ object.id }}">
+            <button type="submit" class="btn btn-primary">submit comment</button>
+        </form>
     </div>
 </div>
 {% endblock content %}

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Forum
+from .models import Forum, Comment
+from .forms import CommentForm
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -39,6 +40,11 @@ class ForumList(ListView):
 class ForumDetail(DetailView):
     model = Forum
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comment_form'] = CommentForm
+        return context
+
 
 @method_decorator(login_required, name='dispatch')
 class ForumCreate(CreateView):
@@ -51,3 +57,19 @@ class ForumCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+@method_decorator(login_required, name='dispatch')
+class CommentCreate(CreateView):
+    model = Comment
+    fields = [
+        'title',
+        'content'
+    ]
+
+    def form_valid(self, form, *args, **kwargs):
+        forum = Forum.objects.get(id=self.kwargs['pk'])
+        form.instance.user = self.request.user
+
+        form.instance.forum = forum
+        return super().form_valid(form, *args, **kwargs)
