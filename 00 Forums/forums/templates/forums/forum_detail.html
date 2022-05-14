@@ -10,6 +10,7 @@
         <h1 class="fs-3">{{ object.title }}</h1>
         <p><span class="badge bg-primary">{{ object.user.username }}</span> - {{ object.created }}</p>
         <p class="border-bottom">{{ object.content}}</p>
+        <a href="{% url 'forums:list' %}" class="btn btn-danger">Back</a>
     </div>
 </div>
 {% endblock content %}

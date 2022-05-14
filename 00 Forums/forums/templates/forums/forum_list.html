@@ -12,13 +12,13 @@ Forum List
         <h1 class="fs-3"><a href="{% url 'forums:detail' forum.slug %}">{{ forum.title }}</a></h1>
         <p><span class="badge bg-primary">{{ forum.user.username }}</span> - {{ forum.created|naturaltime }}</p>
         <p>{{ forum.content|truncatewords:50 }}</p>
-        {% if user.is_authenticated %}
-        <form class ="mb-2" action="{% url 'forums:delete' forum.slug %}" method="post">
+        {% if request.user == forum.user %}
+        <form class ="mb-2" action="{% url 'forums:delete' forum.pk %}" method="post">
             {% csrf_token %}
-            <a href="{% url 'forums:update' forum.slug %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'forums:update' forum.pk %}" class="btn btn-warning">Edit</a>
             <button type="submit" class="btn btn-danger">Delete</button>
         </form>
-        {% endif %}
+        {% endif %}   
         {% endfor %}
     </div>
 </div>

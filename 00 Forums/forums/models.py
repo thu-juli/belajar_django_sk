@@ -15,7 +15,7 @@ class Forum(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return reverse('home')
+        return reverse('forums:detail', kwargs={'slug': self.slug})
 
     def save(self):
         if self.pk == None:
