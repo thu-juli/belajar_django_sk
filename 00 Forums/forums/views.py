@@ -73,3 +73,18 @@ class CommentCreate(CreateView):
 
         form.instance.forum = forum
         return super().form_valid(form, *args, **kwargs)
+
+
+@method_decorator(login_required, name='dispatch')
+class CommentUpdate(OwnerMixin, UpdateView):
+    model = Comment
+    fields = [
+        'title',
+        'content'
+    ]
+
+
+@method_decorator(login_required, name='dispatch')
+class CommentDelete(OwnerMixin, DeleteView):
+    model = Comment
+    success_url = reverse_lazy('forums:list')
